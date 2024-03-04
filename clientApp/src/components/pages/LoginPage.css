@@ -1,0 +1,52 @@
+.login-container {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #212529; /* Text color */
+  }
+  
+  .login-form {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #212529; /* Text color */
+  }
+  
+  input, button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: #007bff; /* Primary blue */
+    color: white;
+    cursor: pointer;
+    border: none; /* Remove border for cleaner look */
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #0062cc; /* Darker blue on hover */
+  }
+  
+  a {
+    text-decoration: none;
+    color: #666;
+    float: right;
+  }
