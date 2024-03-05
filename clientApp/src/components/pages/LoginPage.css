@@ -34,7 +34,7 @@
   }
   
   button {
-    background-color: #007bff; /* Primary blue */
+    /* background-color: #007bff; Primary blue */
     color: white;
     cursor: pointer;
     border: none; /* Remove border for cleaner look */
@@ -42,7 +42,10 @@
   }
   
   button:hover {
-    background-color: #0062cc; /* Darker blue on hover */
+   /* // background-color: #2d707042; Darker blue on hover */
+   /* 2d7070db */
+   background-color: #2d7070db;
+
   }
   
   a {

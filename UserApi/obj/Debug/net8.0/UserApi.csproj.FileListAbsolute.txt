@@ -30,3 +30,4 @@
 /workspaces/codespaces-blank/UserApi/obj/Debug/net8.0/UserApi.pdb
 /workspaces/codespaces-blank/UserApi/obj/Debug/net8.0/UserApi.genruntimeconfig.cache
 /workspaces/codespaces-blank/UserApi/obj/Debug/net8.0/ref/UserApi.dll
+/workspaces/codespaces-blank/UserApi/obj/Debug/net8.0/UserApi.sourcelink.json
