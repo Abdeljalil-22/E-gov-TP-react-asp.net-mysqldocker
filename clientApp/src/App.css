@@ -36,3 +36,33 @@ nav div:hover{
 }
 
 
+.text-center{
+  display: flex;
+
+  justify-content: center;
+  /* justify-items: flex-start; */
+  flex-direction: column;
+}
+
+.home-page-title
+{
+  display: flex;
+  justify-content: center;
+
+}
+.text-center .primary-button{
+width: 300px;
+/* display: flex; */
+/* justify-content: center; */
+}
+
+.text-center .a{
+  /* width: 300px; */
+  /* display: flex; */
+  /* justify-content: center; */
+
+  display: flex; 
+ justify-content: center;
+ align-items: center;
+  }
+

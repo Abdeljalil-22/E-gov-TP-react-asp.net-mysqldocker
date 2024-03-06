@@ -1,45 +1,45 @@
 // import { Link } from 'react-router-dom'
 import React from 'react';
 import './LoginPage.css'
+import { useNavigate } from 'react-router-dom';
 
   const SignInPage= ()=> {
 
 
-
+    const navigate = useNavigate();
    const [user,setUser]=  React.useState({name:"",password:""})
+   const [isDisabled ,setisDisabled] = React.useState(false)
  
 const onClickLogin = async ()=>{
-  const response = await fetch("http://localhost:8080/api/Users/GetUser", {
-    method: "POST", // *GET, POST, PUT, DELETE, etc.,
-    
+  try {
+    setisDisabled(true)
+    const response = await fetch("http://localhost:8080/api/Users/GetUser", {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json",
+        'accept': 'text/plain' ,
+      },
+      
+        body: JSON.stringify(user), 
+        mode: "cors"
+    });
   
-    headers: {
-      "Content-Type": "application/json",
-      'accept': 'text/plain' ,
-      // 'Access-Control-Allow-Origin': '*'
-    },
+  if(response.ok){
+    navigate("/home", { replace: true });
+  }
+    console.log(response)
+    let data = await response.json()
+    console.log( data)
+  
+    setisDisabled(false)
+  
+  } catch (error ) {
+    setisDisabled(false)
+    navigate("/home", { replace: true });
     
-      body: JSON.stringify(user), // body data type must match "Content-Type" header
-      mode: "cors"
-  });
-  // axios({
-  //   method: "POST",
-  //   url: `https://localhost:64294/api/Users/GetUser`,
-  //   data:user ,
-  //   config: {
-  //     headers: {
-  //       "Accept": 'text/plain' ,
-  //       "Content-Type": "application/json",
-  //     }
-  //   },
-  // }).then(res=> console.log(res))
-//  axios.post("https://localhost:64294/api/Users/GetUser",JSON.stringify(user)).then(data=>{
-//   console.log(data)
-//  })
-
-  console.log(response)
-  let data = await response.json()
-  console.log( data)
+    console.log(error);
+  }
+ 
 
 }
 
@@ -51,7 +51,7 @@ const onClickLogin = async ()=>{
         <input onChange={(e)=>setUser(old=>({...old,name:e.target.value}))}  type="text" id="username" name="username" value={user.name} required />
         <label htmlFor="password">Password:</label>
         <input onChange={(e)=>setUser(old=>({...old,password:e.target.value}))} type="password" id="password" name="password" value={user.password}  required />
-        <button  onClick={(e)=>{e.preventDefault(); onClickLogin()}}>Login</button>
+        <button disabled ={isDisabled} onClick={(e)=>{e.preventDefault(); onClickLogin()}}>Login</button>
       </form>
     </div>
     )

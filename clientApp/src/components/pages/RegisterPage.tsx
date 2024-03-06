@@ -47,7 +47,7 @@ const onClickRegister =async ()=>{
           <input onChange={(e)=>setUser(old=>({...old,password:e.target.value}))} value={user.password} type="password" id="password" name="password" required />
           <label htmlFor="confirmPassword">Confirm Password:</label>
           <input onChange={(e)=>setConfirmPassword(e.target.value)} value={confirmPassword} type="password" id="confirmPassword" name="confirmPassword" required />
-          <button onClick={(e)=>{e.preventDefault(); onClickRegister()}}>Register</button>
+          <button  onClick={(e)=>{e.preventDefault(); onClickRegister()}}>Register</button>
         </form>
       </div>
     )
