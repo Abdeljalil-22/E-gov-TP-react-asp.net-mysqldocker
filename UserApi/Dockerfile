@@ -9,17 +9,17 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY *.csproj ./
-RUN dotnet restore "./UserApi/./UserApi.csproj"
+COPY ["UserApi/UserApi.csproj", "UserApi/"]
+RUN dotnet restore "./UserApi/UserApi.csproj"
 COPY . .
-WORKDIR "/src/Qanawat.DAM.Auth.Api"
-RUN dotnet build "./Qanawat.DAM.Auth.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/UserApi"
+RUN dotnet build "./UserApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Qanawat.DAM.Auth.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./UserApi.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Qanawat.DAM.Auth.Api.dll"]
+ENTRYPOINT ["dotnet", "UserApi.dll"]

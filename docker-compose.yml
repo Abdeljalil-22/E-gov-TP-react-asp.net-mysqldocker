@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  userapi:
+    image: ${DOCKER_REGISTRY-}userapi
+    build:
+      context: .
+      dockerfile: UserApi/Dockerfile
+  mysql_db:
+     image: mysql:latest
+     ports:
+           - "3306:3306"
+     environment:
+            - MYSQL_ROOT_HOST=% 
+            - MYSQL_ROOT_PASSWORD=Password 
+

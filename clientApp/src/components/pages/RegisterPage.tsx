@@ -1,22 +1,53 @@
 // import { Link } from 'react-router-dom'
 
+import React from 'react'
 import './RegisterPage.css'
 
 export default function SignUpPage() {
+
+
+  const [user,setUser]=  React.useState({name:"",password:"",email:"" })
+  const [confirmPassword ,setConfirmPassword] = React.useState("")
+
+const onClickRegister =async ()=>{
+
+  if(confirmPassword != user.password){
+    console.log("error")
+  }
+  const response = await fetch("http://localhost:8080/api/Users/PostUser", {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.,
+    
+  
+    headers: {
+      "Content-Type": "application/json",
+      'accept': 'text/plain' ,
+      // 'Access-Control-Allow-Origin': '*'
+    },
+    
+      body: JSON.stringify(user), // body data type must match "Content-Type" header
+      mode: "cors"
+  });
+  console.log(response)
+  if(response.ok){
+    
+  }
+}
+
+
 
     return (
         <div className="register-container">
         <h2>Create an Account</h2>
         <form className="register-form">
           <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" required />
+          <input onChange={(e)=>setUser(old=>({...old,name:e.target.value}))} value={user.name} type="text" id="username" name="username" required />
           <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" required />
+          <input onChange={(e)=>setUser(old=>({...old,email:e.target.value}))} value={user.email} type="email" id="email" name="email" required />
           <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" required />
+          <input onChange={(e)=>setUser(old=>({...old,password:e.target.value}))} value={user.password} type="password" id="password" name="password" required />
           <label htmlFor="confirmPassword">Confirm Password:</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" required />
-          <button type="submit">Register</button>
+          <input onChange={(e)=>setConfirmPassword(e.target.value)} value={confirmPassword} type="password" id="confirmPassword" name="confirmPassword" required />
+          <button onClick={(e)=>{e.preventDefault(); onClickRegister()}}>Register</button>
         </form>
       </div>
     )
