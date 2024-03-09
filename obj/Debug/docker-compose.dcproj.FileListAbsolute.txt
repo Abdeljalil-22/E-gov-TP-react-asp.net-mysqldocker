@@ -1,1 +1,0 @@
-C:\SourceTest\E-gov-TP-react-asp.net-mysqldocker\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
