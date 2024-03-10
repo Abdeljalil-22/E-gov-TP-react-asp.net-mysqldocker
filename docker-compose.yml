@@ -6,6 +6,15 @@ services:
     build:
       context: .
       dockerfile: UserApi/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      # - ASPNETCORE_HTTPS_PORTS=8081
+      # - ASPNETCORE_URLS=https://+:443;http://+:80
+      # - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      # - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      # - ~/.aspnet/https:/https:ro
   mysql_db:
      image: mysql:latest
      ports:
@@ -16,8 +25,8 @@ services:
   client_app:
     # image: ${DOCKER_REGISTRY-}clent_app
     build: 
-      context: .
-      dockerfile: clientApp/Dockerfile
+      context: clientApp
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
 
