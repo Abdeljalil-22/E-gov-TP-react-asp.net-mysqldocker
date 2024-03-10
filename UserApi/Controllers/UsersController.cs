@@ -19,8 +19,8 @@ namespace UserApi.Controllers
            _context.Database.Migrate();
         }
 
-
-        // POST: api/Users/GetUser
+      
+        // GET: api/Users/
         [HttpPost("GetUser")]
         public async Task<ActionResult<User>> GetUser([FromBody] UserLogin data )
         {
@@ -34,24 +34,10 @@ namespace UserApi.Controllers
             return user;
         }
 
-        // GET: api/Users/GetUserById/1
-        [HttpGet("GetUserById/{id}")]
-        public async Task<ActionResult<User>> GetUserById(int id)
-        {
-            var user = await _context.Users.FindAsync(id);
+   
+   
 
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return user;
-        }
-
-
-        
-
-        // POST: api/Users/PostUser
+        // POST: api/Users
         [HttpPost("PostUser")]
         public async Task<ActionResult<User>> PostUser(User user)
         {
